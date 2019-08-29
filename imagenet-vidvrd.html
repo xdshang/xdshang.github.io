@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit">
+        <title>ImageNet-VidVRD - Video Visual Relation Dataset</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Dataset for MM'17 paper Video Visual Relation Detection">
+        <meta name="author" content="Xindi Shang and Jingfan Guo">
+
+        <link href="styles/bootstrap.min.css" rel="stylesheet">
+        <link href="styles/common.css" rel="stylesheet">
+    </head>
+
+    <body data-spy="scroll" data-target=".navbar">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<div class="navbar-brand">
+                    <img alt="Brand" src="vidvrd/assets/nus-logo-white.png">
+                </div>-->
+                <!--<div class="navbar-brand">
+                    <img alt="Brand" src="vidvrd/assets/lms-logo.png">
+                </div>-->
+                <h2 class="navbar-brand hidden-xs hidden-sm" >
+                    <span class="logo">ImageNet-VidVRD</span>
+                    <span class="description">Video Visual Relation Dataset</span>
+                </h2>
+                <h2 class="navbar-brand hidden-md hidden-lg" >
+                    <span class="logo">ImageNet-VidVRD</span>
+                </h2>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="page-scroll" href="#introduction">Introduction</a></li>
+                    <li><a class="page-scroll" href="#downloads">Downloads</a></li>
+                    <li><a class="page-scroll" href="#statistics">Statistics</a></li>
+                </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section id="introduction" class="scrollable-section" style="padding-top: 50px;">
+            <div class="container">
+                <h3>Introduction</h3>
+                <p>
+                    As a bridge to connect vision and language, visual relations between objects such as “person-touch-dog” 
+                    and “cat-above-sofa” provide a more comprehensive visual content understanding beyond objects. 
+                    Video Visual Relation Detection (VidVRD) aims to detect instances of visual relations of interest in a 
+                    video, where a visual relation instance is represented by a relation triplet &ltsubject, predicate, 
+                    object&gt with the trajectories of the subject and object (as shown in Figure 1). As compared to still 
+                    images, videos provide a more natural set of features for detecting visual relations, such as the dynamic 
+                    relations like “A-follow-B” and “A-towards-B”, and temporally changing relations like “A-chase-B” 
+                    followed by “A-hold-B”. Yet, VidVRD is technically more challenging than ImgVRD due to the 
+                    difficulties in accurate object tracking and diverse relation appearances in the video domain.
+                </p>
+                <figure class="figure" style="margin-bottom: 12px;">
+                    <img src="vidvrd/fig_videorelation.png" class="figure-img img-responsive center-block"> 
+                    <figcaption class="figure-caption text-center">
+                        <em>Figure 1: examples of video visual relation instances</em>
+                    </figcaption>
+                </figure>
+                <p>
+                    We release the first dataset, namely <i>ImageNet-VidVRD</i>, in order to facilitate innovative researches on the 
+                    problem. The dataset contains 1,000 videos selected from ILVSRC2016-VID dataset based on whether the video 
+                    contains clear visual relations. It is split into 800 training set and 200 test set, and covers common 
+                    <a href="vidvrd/object.txt">subject/objects</a> of 35 categories and 
+                    <a href="vidvrd/predicate.txt">predicates</a> of 132 categories. Ten people contributed to labeling the
+                    dataset, which includes object trajectory labeling and relation labeling. Since the ILVSRC2016-VID dataset
+                    has the object trajectory annotation for 30 categories already, we supplemented the annotations by labeling 
+                    the remaining 5 categories. In order to save the labor of relation labeling, we labeled typical 
+                    segments of the videos in the training set and the whole of the videos in the test set. Several statistics 
+                    of the dataset are shown in below.
+                </p>
+            </div>
+        </section>
+
+        <section id="downloads" class="scrollable-section">
+            <div class="container">
+                <h3>Downloads</h3>
+                <p>
+                    We provide the visual relation annotations for the 1,000 videos.
+                    Each video has a single annotation file in JSON format, which is named after the ID from the 
+                    train/val set of ImageNet Object Detection from Video Challenge.
+                    The detailed JSON file format is as follows:
+                </p>
+<pre style="height:400px; overflow:auto;">
+{
+    "video_id": "ILSVRC2015_train_00010001",        <em class="comment"># Video ID from the original ImageNet ILSVRC2016 video dataset</em>
+    "frame_count": 219,
+    "fps": 30, 
+    "width": 1920, 
+    "height": 1080, 
+    "subject/objects": [                            <em class="comment"># List of subject/objects</em>
+        {
+            "tid": 0,                               <em class="comment"># Trajectory ID of a subject/object</em>
+            "category": "bicycle"
+        }, 
+        ...
+    ], 
+     "trajectories": [                              <em class="comment"># List of frames</em>
+        [                                           <em class="comment"># List of bounding boxes in each frame</em>
+            {
+                "tid": 0,                       
+                "bbox": {
+                    "xmin": 672,                    <em class="comment"># left</em>
+                    "ymin": 560,                    <em class="comment"># top</em>
+                    "xmax": 781,                    <em class="comment"># right</em>
+                    "ymax": 693                     <em class="comment"># bottom</em>
+                }, 
+                "generated": 0,                     <em class="comment"># 0 - the bounding box is manually labeled</em>
+                                                    <em class="comment"># 1 - the bounding box is automatically generated</em>
+            }, 
+            ...
+        ],
+        ...
+    ]
+    "relation_instances": [                         <em class="comment"># List of annotated visual relation instances</em>
+        {
+            "subject_tid": 0,                       <em class="comment"># Corresponding trajectory ID of the subject</em>
+            "object_tid": 1,                        <em class="comment"># Corresponding trajectory ID of the object</em>
+            "predicate": "move_right", 
+            "begin_fid": 0,                         <em class="comment"># Frame index where this relation begins (inclusive)</em>
+            "end_fid": 210                          <em class="comment"># Frame index where this relation ends (exclusive)</em>
+        }, 
+        ...
+    ]
+}
+</pre>
+                <p>
+                    Useful downloading links can be found as follows.
+                    For any question regarding the dataset, please contact Mr. Xindi Shang (shangxin AT comp.nus.edu.sg). 
+                </p>
+                <ul>
+                    <li> <a href="public_data/vidvrd/vidvrd-annotations.zip">annotations</a> </li>
+                    <li> 
+                        <a href="https://www.kaggle.com/c/imagenet-object-detection-from-video-challenge/download/imagenet_object_detection_video_train.tar.gz">videos</a> 
+                        <a href="public_data/vidvrd/vidvrd-videos.zip">(1,000 subset)</a>
+                    </li>
+                    <li> <a href="https://github.com/xdshang/VidVRD-helper" target="_blank">evaluation codes</a> </li>
+                </ul>
+                <p>If this dataset helps your research, please kindly cite <a href="large-files/vidvrd-mm17.pdf">this paper</a>:</p>
+<pre>
+@inproceedings{shang2017video,
+    author={Shang, Xindi and Ren, Tongwei and Guo, Jingfan and Zhang, Hanwang and Chua, Tat-Seng},
+    title={Video Visual Relation Detection},
+    booktitle={ACM International Conference on Multimedia},
+    address={Mountain View, CA USA},
+    month={October},
+    year={2017}
+}
+</pre>
+            </div>
+        </section>
+
+        <section id="statistics" class="scrollable-section">
+            <div class="container">
+                <h3>Statistics</h3>
+                <p>
+                    Statistics of our VidVRD dataset are listed below. The number of video visual relation is not 
+                    available on training set because it is only sparsely labeled as mentioned above.
+                </p>
+                <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <th></th>
+                        <th>training set</th>
+                        <th>test set</th>
+                    </tr>
+                    <tr>
+                        <td>video</td>
+                        <td>800</td>
+                        <td>200</td>
+                    </tr>
+                    <tr>
+                        <td>subject/object category</td>
+                        <td>35</td>
+                        <td>35</td>
+                    </tr>
+                    <tr>
+                        <td>predicate category</td>
+                        <td>132</td>
+                        <td>132</td>
+                    </tr>
+                    <tr>
+                        <td>relation triplet</td>
+                        <td>2,961</td>
+                        <td>1,011</td>
+                    </tr>
+                    <tr>
+                        <td>visual relation instance</td>
+                        <td>&ndash;</td>
+                        <td>4,835</td>
+                    </tr>
+                </table>
+                </div>
+            </div>
+        </section>
+
+        <!--<footer>
+            <div class="container">
+                <hr>
+                <p>&copy;</p>
+            </div>
+        </footer>-->
+
+        <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+        <script type="text/javascript" src="scripts/jquery.easing.min.js"></script>
+        <script type="text/javascript" src="scripts/scrolling-nav.js"></script>
+    </body>
+</html>
