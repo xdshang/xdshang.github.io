@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit">
+        <title>VidOR Dataset</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="The dataset">
+        <meta name="author" content="Xindi Shang, Donglin Di and Junbin Xiao">
+
+        <link href="styles/bootstrap.min.css" rel="stylesheet">
+        <link href="styles/common.css" rel="stylesheet">
+    </head>
+
+    <body data-spy="scroll" data-target=".navbar">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <h2 class="navbar-brand hidden-xs hidden-sm" >
+                        <span class="logo">VidOR</span>
+                        <span class="description">Video Object Relation Dataset</span>
+                    </h2>
+                    <h2 class="navbar-brand hidden-md hidden-lg" >
+                        <span class="logo">VidOR</span>
+                    </h2>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="page-scroll" href="#introduction">Introduction</a></li>
+                    <li><a class="page-scroll" href="#downloads">Downloads</a></li>
+                    <li><a class="page-scroll" href="#challenges">Challenges</a></li>
+                    <li><a class="page-scroll" href="#statistics">Statistics</a></li>
+                </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section id="introduction" class="scrollable-section" style="padding-top: 50px;">
+            <div class="container">
+                <h3>Introduction</h3>
+                <p>
+                    VidOR (Video Object Relation) dataset contains 10,000 videos (98.6 hours) from 
+                        <a href="https://multimediacommons.wordpress.com/yfcc100m-core-dataset/" target="_blank">YFCC100M collection</a>
+                        together with a large amount of fine-grained annotations for relation understanding.
+                    In particular, 80 categories of <a href="vidor/entity.html">objects</a>
+                        are annotated with bounding-box trajectory to indicate their spatio-temporal location in the videos;
+                        and 50 categories of relation <a href="vidor/predicate.html">predicates</a> are annotated
+                        among all pairs of annotated objects with starting and ending frame index.
+                    In total, there are around 50,000 object and 380,000 relation instances annotated.
+                    To use the dataset for model development, we split the dataset into
+                        7,000 videos for training, 835 videos for validation, and 2,165 videos for testing. 
+                </p>
+                <br>
+                <div class="image-grid hidden-xs">
+                    <img src="vidor/samples/3578746529.gif" alt="visualization-eg1" height="150" width="220">
+                    <img src="vidor/samples/3909060617.gif" alt="visualization-eg2" height="150" width="220">
+                    <img src="vidor/samples/4752448635.gif" alt="visualization-eg3" height="150" width="220">
+                    <img src="vidor/samples/5100454414.gif" alt="visualization-eg4" height="150" width="220">
+                    <img src="vidor/samples/5178231559.gif" alt="visualization-eg5" height="150" width="220">
+                    <img src="vidor/samples/5571958942.gif" alt="visualization-eg6" height="150" width="220">
+                    <img src="vidor/samples/6797818033.gif" alt="visualization-eg7" height="150" width="220">
+                    <img src="vidor/samples/8540312536.gif" alt="visualization-eg8" height="150" width="220">
+                    <img src="vidor/samples/9231052427.gif" alt="visualization-eg9" height="150" width="220">
+                    <img src="vidor/samples/10148360995.gif" alt="visualization-eg10" height="150" width="220">
+                </div>
+                <div class="image-grid hidden-sm hidden-md hidden-lg">
+                    <img src="vidor/samples/3578746529.gif" alt="visualization-eg1" height="150" width="220">
+                    <img src="vidor/samples/8540312536.gif" alt="visualization-eg8" height="150" width="220">
+                    <img src="vidor/samples/10148360995.gif" alt="visualization-eg10" height="150" width="220">
+                </div>
+                <br>
+                <p>
+                    A detailed description about the dataset can be found in the following
+                    <a href="large-files/vidor-icmr19.pdf" target="_blank">paper</a>.
+                    Please kindly cite it if the dataset helps your research.
+                </p>
+<pre>
+@inproceedings{shang2019annotating,
+    title={Annotating Objects and Relations in User-Generated Videos},
+    author={Shang, Xindi and Di, Donglin and Xiao, Junbin and Cao, Yu and Yang, Xun and Chua, Tat-Seng},
+    booktitle={Proceedings of the 2019 on International Conference on Multimedia Retrieval},
+    pages={279--287},
+    year={2019},
+    organization={ACM}
+}
+</pre>
+            </div>
+        </section>
+
+        <section id="downloads" class="scrollable-section">
+            <div class="container">
+                <h3>Downloads</h3>
+                <p>
+                    Please download the videos in training/validation set using the following links, and extract video frames using
+                    <a href="public_data/vidor/ffmpeg-3.3.4.zip">FFmpeg-3.3.4</a>.
+                    The total sizes of training and validation videos is around 24.5G and 2.9G, respectively.
+                    <em>It is recommended to unarchive the downloaded parts into the same directory.</em>
+                    <br>
+                    Alternatively, as the videos are exclusively drawn from the YFCC100M collection without any processing, you can also obtain
+                    them via AWS S3 data storage hosted by
+                    <a href="http://multimedia-commons.s3-website-us-west-2.amazonaws.com/" target="_blank">Multimedia Commons</a>
+                    but need to organize the files in the directory structure consistent with the "<em>video_path</em>" in the annotations.
+                    <ul>
+                        <li>
+                            <a href="public_data/vidor/training-video-part1.zip">training videos (part 1)</a>
+                            <small>[MD5: eec7a718c05a16e388d6ee23102370d3]</small>
+                        </li>
+                        <li>
+                            <a href="public_data/vidor/training-video-part2.zip">training videos (part 2)</a>
+                            <small>[MD5: 40ab82dccd9084c855452f4a2886137a]</small>
+                        </li>
+                        <li>
+                            <a href="public_data/vidor/training-video-part3.zip">training videos (part 3)</a>
+                            <small>[MD5: bdea6aa584913600fe5da95902fd938a]</small>
+                        </li>
+                        <li>
+                            <a href="public_data/vidor/training-video-part4.zip">training videos (part 4)</a>
+                            <small>[MD5: a8dd511d36da4057a9b52f461065126f]</small>
+                        </li>
+                        <li>
+                            <a href="public_data/vidor/training-video-part5.zip">training videos (part 5)</a>
+                            <small>[MD5: b2daedc2aa5d118e71946ea2614901df]</small>
+                        </li>
+                        <li>
+                            <a href="public_data/vidor/training-video-part6.zip">training videos (part 6)</a>
+                            <small>[MD5: bfa77115ce69256063f22e59f87b90d2]</small>
+                        </li>
+                        <li>
+                            <a href="public_data/vidor/training-video-part7.zip">training videos (part 7)</a>
+                            <small>[MD5: b4ff9a77d2629d372115e4fe8a9398b4]</small>
+                        </li>
+                        <li>
+                            <a href="public_data/vidor/training-video-part8.zip">training videos (part 8)</a>
+                            <small>[MD5: e222802b0ce37aec1c3f14e81ea7e2c0]</small>
+                        </li>
+                        <li>
+                            <a href="public_data/vidor/validation-video.zip">validation videos</a>
+                            <small>[MD5: b5386d83faeed98b8342ed31be737900]</small>
+                        </li>
+                    </ul>
+                    (Testing videos will be available after registering the challenges)
+                </p>
+                <p>
+                    Please download the annotations in training/validation set using the following links,
+                    in which one JSON file contains the annotation for one video.
+                    The format of a JSON file is shown in below, and you can load the annotations together using this helper 
+                    <a href="https://github.com/xdshang/VidVRD-helper/blob/master/dataset/vidor.py" target="_blank">script</a>.
+                    <ul>
+                        <li>
+                            <a href="public_data/vidor/training-annotation.zip">training annotations</a>
+                            <small>[MD5: 85f39fdd81a780bbb9b975cca8f219a2]</small>
+                        </li>
+                        <li>
+                            <a href="public_data/vidor/validation-annotation.zip">validation annotations</a>
+                            <small>[MD5: 96c6870910e8d4fb3836878215432c1f]</small>
+                        </li>
+                    </ul>
+                </p>
+<pre class="hidden-sm hidden-md hidden-lg">
+<em class="comment">Please view the JSON format in larger screen</em>
+</pre>
+<pre class="hidden-xs">
+{
+    "version": "VERSION 1.0",
+    "video_id": "5159741010",                       <em class="comment"># Video ID in YFCC100M collection</em>
+    "video_hash": "6c7a58bb458b271f2d9b45de63f3a2", <em class="comment"># Video hash offically used for indexing in YFCC100M collection </em>
+    "video_path": "1025/5159741010.mp4",            <em class="comment"># Relative path name in this dataset</em>
+    "frame_count": 219,
+    "fps": 29.97002997002997, 
+    "width": 1920, 
+    "height": 1080, 
+    "subject/objects": [                            <em class="comment"># List of subject/objects</em>
+        {
+            "tid": 0,                               <em class="comment"># Trajectory ID of a subject/object</em>
+            "category": "bicycle"
+        }, 
+        ...
+    ], 
+    "trajectories": [                               <em class="comment"># List of frames</em>
+        [                                           <em class="comment"># List of bounding boxes in each frame</em>
+            {                                       <em class="comment"># The bounding box at the 1st frame</em>
+                "tid": 0,                           <em class="comment"># The trajectory ID to which the bounding box belongs</em>
+                "bbox": {
+                    "xmin": 672,                    <em class="comment"># Left</em>
+                    "ymin": 560,                    <em class="comment"># Top</em>
+                    "xmax": 781,                    <em class="comment"># Right</em>
+                    "ymax": 693                     <em class="comment"># Bottom</em>
+                }, 
+                "generated": 0,                     <em class="comment"># 0 - the bounding box is manually labeled</em>
+                                                    <em class="comment"># 1 - the bounding box is automatically generated by a tracker</em>
+                "tracker": "none"                   <em class="comment"># If generated=1, it is one of "linear", "kcf" and "mosse"</em>
+            }, 
+            ...
+        ],
+        ...
+    ],
+    "relation_instances": [                         <em class="comment"># List of annotated visual relation instances</em>
+        {
+            "subject_tid": 0,                       <em class="comment"># Corresponding trajectory ID of the subject</em>
+            "object_tid": 1,                        <em class="comment"># Corresponding trajectory ID of the object</em>
+            "predicate": "in_front_of", 
+            "begin_fid": 0,                         <em class="comment"># Frame index where this relation begins (inclusive)</em>
+            "end_fid": 210                          <em class="comment"># Frame index where this relation ends (exclusive)</em>
+        }, 
+        ...
+    ]
+}
+</pre>
+            </div>
+        </section>
+
+        <section id="challenges" class="scrollable-section">
+            <div class="container">
+                <h3>Challenges</h3>
+                <ul>
+                    <li><a href="video-relation-challenge/mm19-gdc/index.html" target="_blank">ACM Multimedia 2019 Grand Challenge</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="statistics" class="scrollable-section">
+            <div class="container">
+                <h3>Statistics</h3>
+                <div class="container">
+                    <figure class="figure" style="margin-bottom: 12px;">
+                        <figcaption>
+                            Statistics for video lengths in train/val set.
+                            The lengths of most videos are distributed between 3 and 93 seconds.
+                            The shortest video is 1.00 second, and the longest video of them is 180.01 seconds.
+                            Overall, the average video length in train/val set is 35.73 seconds.
+                        </figcaption>
+                        <br>
+                        <img src="vidor/train_val_vid_length.png" class="figure-img img-responsive center-block" alt="train_val_vid_length">
+                    </figure>
+                </div>
+                <br>
+                <div class="container">
+                    <figure class="figure" style="margin-bottom: 12px;">
+                        <figcaption>
+                            Objects statistics per category in train/val set.
+                            The categories are grouped into three upper level categories: Human(3), Animal(28) and Other(49).
+                            It can be found that the number of objects in Human accounts for 56.34% of the proportion,
+                                while the portion of objects in Animal and Other are 35.78% and 7.98%, respectively.
+                        </figcaption>
+                        <br>
+                        <img src="vidor/train_val_object.png" class="figure-img img-responsive center-block" alt="train_val_object">
+                    </figure>
+                </div>
+                <br>
+                <div class="container">
+                    <figure class="figure" style="margin-bottom: 12px;">
+                        <figcaption>
+                            Predicate statistics per category in train/val set.
+                            Each bar indicates the number of relation instances whose predicate belongs to that category.
+                            The two types of predicates (i.e. spatial(8) and actions(42)) are highlighted in different colors.
+                            And their proportions are 76.77% and 23.23%, respectively.
+                        </figcaption>
+                        <br>
+                        <img src="vidor/train_val_predicate.png" class="figure-img img-responsive center-block" alt="train_val_predicate">
+                    </figure>
+                </div>
+                <br>
+                <div class="container">
+                    <figure class="figure" style="margin-bottom: 12px;">
+                        <figcaption>
+                            Statistics of the types of relation triplets in train/val set. The dark area shows the number
+                            and portion of triplet types unique in the training set;
+                            the grey area shows that of triplet types appearing in both of the training and validation set;
+                            and the light area shows that of triplet types unique in the validation set.
+                            In the validation set, 641 out of 30,142 relation instances belong to the 295 triplet types (light area).
+                        </figcaption>
+                        <br>
+                        <img src="vidor/train_val_triplet.png" class="figure-img img-responsive center-block">
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- <footer>
+            <div class="container">
+                <hr>
+                <p>&copy;</p>
+            </div>
+        </footer> -->
+
+        <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+        <script type="text/javascript" src="scripts/jquery.easing.min.js"></script>
+        <script type="text/javascript" src="scripts/scrolling-nav.js"></script>
+    </body>
+</html>
