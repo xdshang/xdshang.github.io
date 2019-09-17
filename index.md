@@ -3,9 +3,11 @@ layout: home
 ---
 # Proud Works
 
-VidOR: A 10K Video Object and Relation Dataset ([page](docs/vidor.html))
+VidOR: A 10K Video Object Relation Dataset 
+<a href="docs/vidor.html"><i class="far fa-eye"></i></a>
 
-Video Relation Detection ([page](docs/imagenet-vidvrd.html))
+Video Relation Detection
+<a href="docs/imagenet-vidvrd.html"><i class="far fa-eye"></i></a>
 
 # Interests
 

@@ -297,7 +297,7 @@ canvas {
 .main-info,
 .about-info {
   text-align: center;
-  max-width: 450px;
+  max-width: 400px;
   width: 100%;
   margin: 0 auto;
   h1,
@@ -391,7 +391,7 @@ canvas {
 .main-info {
   color: $white;
   h1 {
-    font-family: 'Allura', arial;
+    font-family: "Allura";
     font-size: 35px;
     letter-spacing: 1px;
   }
