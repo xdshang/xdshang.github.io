@@ -38,8 +38,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a class="page-scroll" href="#introduction">Introduction</a></li>
                     <li><a class="page-scroll" href="#downloads">Downloads</a></li>
-                    <li><a class="page-scroll" href="#challenges">Challenges</a></li>
                     <li><a class="page-scroll" href="#statistics">Statistics</a></li>
+                    <li><a class="page-scroll" href="#citations">Citations</a></li>
                 </ul>
                 </div>
             </div>
@@ -56,10 +56,17 @@
                         are annotated with bounding-box trajectory to indicate their spatio-temporal location in the videos;
                         and 50 categories of relation <a href="vidor/predicate.html">predicates</a> are annotated
                         among all pairs of annotated objects with starting and ending frame index.
-                    In total, there are around 50,000 object and 380,000 relation instances annotated.
-                    To use the dataset for model development, we split the dataset into
-                        7,000 videos for training, 835 videos for validation, and 2,165 videos for testing. 
+                    This results in around 50,000 object and 380,000 relation instances annotated.
+                    To use the dataset for model development, the dataset is split into
+                        7,000 videos for training, 835 videos for validation, and 2,165 videos for testing.
+                    VidOR can provide foundation for many kinds of research and has been used in:
                 </p>
+                <ul>
+                    <li><a href="https://videorelation.nextcenter.org/mm19-gdc/" target="_blank">ACM Multimedia 2019 Grand Challenge</a></li>
+                    <li><a href="https://videorelation.nextcenter.org/" target="_blank">ACM Multimedia 2020 Grand Challenge</a></li>
+                    <li><a href="https://github.com/Guaranteer/VidSTG-Dataset" target="_blank">VidSTG</a>:
+                    A Dataset for Video Grounding</li>
+                </ul>
                 <br>
                 <div class="image-grid hidden-xs">
                     <img src="vidor/samples/3578746529.gif" alt="visualization-eg1" height="150" width="220">
@@ -78,22 +85,6 @@
                     <img src="vidor/samples/8540312536.gif" alt="visualization-eg8" height="150" width="220">
                     <img src="vidor/samples/10148360995.gif" alt="visualization-eg10" height="150" width="220">
                 </div>
-                <br>
-                <p>
-                    A detailed description about the dataset can be found in the following
-                    <a href="https://dl.acm.org/authorize?N680489">paper</a>.
-                    Please kindly cite it if the dataset helps your research.
-                </p>
-<pre>
-@inproceedings{shang2019annotating,
-    title={Annotating Objects and Relations in User-Generated Videos},
-    author={Shang, Xindi and Di, Donglin and Xiao, Junbin and Cao, Yu and Yang, Xun and Chua, Tat-Seng},
-    booktitle={Proceedings of the 2019 on International Conference on Multimedia Retrieval},
-    pages={279--287},
-    year={2019},
-    organization={ACM}
-}
-</pre>
             </div>
         </section>
 
@@ -147,8 +138,10 @@
                             <a href="https://storage.googleapis.com/next-dataset/VidOR/validation-video.zip">validation videos</a>
                             <small>[MD5: b5386d83faeed98b8342ed31be737900]</small>
                         </li>
+                        <li>
+                            testing videos are available after participating the grand challenges
+                        </li>
                     </ul>
-                    (Testing videos will be available after registering the challenges)
                 </p>
                 <p>
                     Please download the annotations in training/validation set using the following links,
@@ -219,23 +212,17 @@
             </div>
         </section>
 
-        <section id="challenges" class="scrollable-section">
-            <div class="container">
-                <h3>Challenges</h3>
-                <ul>
-                    <li><a href="https://videorelation.nextcenter.org/mm19-gdc/" target="_blank">ACM Multimedia 2019 Grand Challenge</a></li>
-                    <li><a href="https://videorelation.nextcenter.org/" target="_blank">ACM Multimedia 2020 Grand Challenge</a></li>
-                </ul>
-            </div>
-        </section>
-
         <section id="statistics" class="scrollable-section">
             <div class="container">
                 <h3>Statistics</h3>
+                <p>
+                    This section provides an overview of the dataset statistics. A detailed description about the
+                    dataset can be found in this <a href="https://dl.acm.org/authorize?N680489">paper</a>.
+                </p>
                 <div class="container">
                     <figure class="figure" style="margin-bottom: 12px;">
                         <figcaption>
-                            Statistics for video lengths in train/val set.
+                            Figure 1: Statistics for video lengths in train/val set.
                             The lengths of most videos are distributed between 3 and 93 seconds.
                             The shortest video is 1.00 second, and the longest video of them is 180.01 seconds.
                             Overall, the average video length in train/val set is 35.73 seconds.
@@ -248,7 +235,7 @@
                 <div class="container">
                     <figure class="figure" style="margin-bottom: 12px;">
                         <figcaption>
-                            Objects statistics per category in train/val set.
+                            Figure 2: Objects statistics per category in train/val set.
                             The categories are grouped into three upper level categories: Human(3), Animal(28) and Other(49).
                             It can be found that the number of objects in Human accounts for 56.34% of the proportion,
                                 while the portion of objects in Animal and Other are 35.78% and 7.98%, respectively.
@@ -261,7 +248,7 @@
                 <div class="container">
                     <figure class="figure" style="margin-bottom: 12px;">
                         <figcaption>
-                            Predicate statistics per category in train/val set.
+                            Figure 3: Predicate statistics per category in train/val set.
                             Each bar indicates the number of relation instances whose predicate belongs to that category.
                             The two types of predicates (i.e. spatial(8) and actions(42)) are highlighted in different colors.
                             And their proportions are 76.77% and 23.23%, respectively.
@@ -274,8 +261,8 @@
                 <div class="container">
                     <figure class="figure" style="margin-bottom: 12px;">
                         <figcaption>
-                            Statistics of the types of relation triplets in train/val set. The dark area shows the number
-                            and portion of triplet types unique in the training set;
+                            Figure 4: Statistics of the types of relation triplets in train/val set. 
+                            The dark area shows the number and portion of triplet types unique in the training set;
                             the grey area shows that of triplet types appearing in both of the training and validation set;
                             and the light area shows that of triplet types unique in the validation set.
                             In the validation set, 641 out of 30,142 relation instances belong to the 295 triplet types (light area).
@@ -284,6 +271,36 @@
                         <img src="vidor/train_val_triplet.png" class="figure-img img-responsive center-block">
                     </figure>
                 </div>
+            </div>
+        </section>
+
+        <section id="citations" class="scrollable-section">
+            <div class="container">
+                <h3>Citations</h3>
+                <p>
+                    Please kindly cite these works if the dataset helps your research.
+                </p>
+<pre>
+@inproceedings{shang2019annotating,
+    title={Annotating Objects and Relations in User-Generated Videos},
+    author={Shang, Xindi and Di, Donglin and Xiao, Junbin and Cao, Yu and Yang, Xun and Chua, Tat-Seng},
+    booktitle={Proceedings of the 2019 on International Conference on Multimedia Retrieval},
+    pages={279--287},
+    year={2019},
+    organization={ACM}
+}
+
+@article{thomee2016yfcc100m,
+    title={YFCC100M: The New Data in Multimedia Research},
+    author={Thomee, Bart and Shamma, David A and Friedland, Gerald and Elizalde, Benjamin and Ni, Karl and Poland, Douglas and Borth, Damian and Li, Li-Jia},
+    journal={Communications of the ACM},
+    volume={59},
+    number={2},
+    pages={64--73},
+    year={2016},
+    publisher={ACM New York, NY, USA}
+}
+</pre>
             </div>
         </section>
 
