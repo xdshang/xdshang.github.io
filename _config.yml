@@ -1,6 +1,6 @@
 # Site
 title: Xindi Shang
-description: PhD Candidate in Computer Science
+description: PhD in Computer Science
 url: https://xdshang.github.io
 logo: avatar.png                                       # Site logo
 locale: en_US
@@ -29,8 +29,8 @@ sass:
 #google-analytics: UA-XXXXX-Y
 
 # Social Links
-email:             shangxin@comp.nus.edu.sg
-#google.plus:        username
+# email:             shangxin@comp.nus.edu.sg
+google.plus:        enabled
 # twitter:            username
 #facebook:           username
 github:             xdshang
