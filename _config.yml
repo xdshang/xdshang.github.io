@@ -29,8 +29,8 @@ sass:
 #google-analytics: UA-XXXXX-Y
 
 # Social Links
-# email:             shangxin@comp.nus.edu.sg
-google.plus:        enabled
+email:             shangxin@comp.nus.edu.sg
+# google.plus:        username
 # twitter:            username
 #facebook:           username
 github:             xdshang
